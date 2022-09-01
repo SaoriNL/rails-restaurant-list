@@ -6,23 +6,32 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @restaurant = Restaurant.where(category_id: @category.id)
+    @restaurants = Restaurant.where(category_id: @category.id)
   end
 
   def new
+    @category = Category.new
   end
 
   def create
+    @category = Category.new(category_params)
+    @category.save
   end
 
-  def update
+  def edit
+    @category = Category.find(params[:id])
   end
 
-  def delete
+  def destroy
+    @category = Category.find(params[:id])
+    @category.delete
   end
 
-  # private
+  private
   # def set_category
   #   @category = Category.find(params[:id])
   # end
+  def category_params
+    params.require(:category).permit(:name)
+  end
 end
