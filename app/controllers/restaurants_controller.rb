@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  # before_action :set_restaurant
+  before_action :set_restaurant, only: %i[show create]
 
   def index
     @restaurants = Restaurant.all
@@ -9,8 +9,20 @@ class RestaurantsController < ApplicationController
 
   end
 
-  # private
-  # def set_restaurant
-  #   @restaurant = Restaurant(params[:id])
-  # end
+  def new
+    @restaurant = Restaurant.new
+  end
+
+  def create
+    @restaurant.save
+  end
+
+  private
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
+
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :address)
+  end
 end
