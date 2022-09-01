@@ -3,4 +3,9 @@
   <h2><%= link_to category_path(category) do %></h2>
     <h2><%= category.name %></h2>
   <% end %>
+  <h2><%= link_to category_path(category), method: :delete do %></h2>
+    <button>Delete</button>
+  <% end %>
 <% end %>
+
+
