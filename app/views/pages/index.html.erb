@@ -1,11 +1,22 @@
-<h1>index</h1>
-<% @categories.each do |category| %>
-  <h2><%= link_to category_path(category) do %></h2>
-    <h2><%= category.name %></h2>
-  <% end %>
-  <h2><%= link_to category_path(category), method: :delete do %></h2>
-    <button>Delete</button>
-  <% end %>
-<% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Restaurnt List!</h1>
+    <p>Find a best place to eat from all over the world</p>
+  </div>
+</div>
 
-
+<div class="container" style="margin-top:50px">
+  <% @categories.each do |category| %>
+  <div class="card-product">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-product-infos">
+      <h2><%= link_to category_path(category) do %></h2>
+        <h2><%= category.name %></h2>
+      <% end %>
+      <h2><%= link_to category_path(category), method: :delete do %></h2>
+        <button>Delete</button>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+</div>
